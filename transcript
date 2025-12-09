@@ -1,0 +1,407 @@
+# //  Questa Sim
+# //  Version 10.7d linux Feb 15 2019
+# //
+# //  Copyright 1991-2019 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+pwd
+# /home/shekharc/LPDDR5_VIP_by_Shekhar
+do run.do
+# QuestaSim vlog 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 11:37:14 on Dec 09,2025
+# vlog -reportprogress 300 lpddr5_controller_top.sv "+incdir+/remote/pviphome01/uvm-1.2/src" 
+# -- Compiling package uvm_pkg
+# -- Compiling package lpddr5_controller_pkg
+# -- Importing package uvm_pkg
+# ** Warning: ** while parsing file included at lpddr5_controller_top.sv(33)
+# ** at lpddr5_timing_configuration.sv(59): (vlog-2240) Treating stand-alone use of function 'randomize' as an implicit VOID cast.
+# ** Warning: ** while parsing file included at lpddr5_controller_top.sv(33)
+# ** at lpddr5_controller_driver.sv(98): (vlog-2875) Task "write_latency" is being called in function "calculate_timing_params".
+# ** Warning: ** while parsing file included at lpddr5_controller_top.sv(33)
+# ** at lpddr5_controller_driver.sv(99): (vlog-2875) Task "get_twckenl_and_twckpre_toggle_and_twckpre_static_wr_ck" is being called in function "calculate_timing_params".
+# ** Warning: ** while parsing file included at lpddr5_controller_top.sv(33)
+# ** at lpddr5_controller_driver.sv(108): (vlog-2875) Task "get_tWCKPST_wck" is being called in function "calculate_timing_params".
+# -- Compiling interface lpddr5_interface
+# -- Compiling module top
+# -- Importing package lpddr5_controller_pkg
+# 
+# Top level modules:
+# 	top
+# End time: 11:37:17 on Dec 09,2025, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 4
+# ** Warning: (vsim-159) Mode option -64 is not supported in this context and will be ignored.
+# vsim -64 -novopt -suppress 12110 top -sv_lib /global/apps/mentor_graphics/questa_10.7d/questasim/uvm-1.2/linux/uvm_dpi "+UVM_TESTNAME=test_WR16" "+UVM_VERBOSITY=UVM_MEDIUM" 
+# Start time: 11:37:18 on Dec 09,2025
+# Loading /tmp/shekharc@Neptune_dpi_15401/linux_gcc-5.3.0/export_tramp.so
+# ** Warning: (vsim-8891) All optimizations are disabled because the -novopt option is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features, please see the User's Manual section on Preserving Object Visibility with vopt. -novopt option is now deprecated and will be removed in future releases.
+# Refreshing /home/shekharc/LPDDR5_VIP_by_Shekhar/work.top
+# ** Warning: (vlog-8891) All optimizations are disabled because the -novopt option is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features, please see the User's Manual section on Preserving Object Visibility with vopt. -novopt option is now deprecated and will be removed in future releases.
+# ** Note: (vsim-8785) UVM-aware debugging capabilities will be disabled since no compiled "questa_uvm_pkg" can be found.
+# This also means that later if you turn on UVM-aware debugging your debug simulations may have
+# different random seeds from your non-debug simulations.
+# Refreshing /home/shekharc/LPDDR5_VIP_by_Shekhar/work.lpddr5_interface
+# ** Warning: (vlog-8891) All optimizations are disabled because the -novopt option is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features, please see the User's Manual section on Preserving Object Visibility with vopt. -novopt option is now deprecated and will be removed in future releases.
+# Loading sv_std.std
+# Loading work.lpddr5_interface
+# Refreshing /home/shekharc/LPDDR5_VIP_by_Shekhar/work.lpddr5_controller_pkg
+# ** Warning: (vlog-8891) All optimizations are disabled because the -novopt option is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features, please see the User's Manual section on Preserving Object Visibility with vopt. -novopt option is now deprecated and will be removed in future releases.
+# Refreshing /home/shekharc/LPDDR5_VIP_by_Shekhar/work.uvm_pkg
+# ** Warning: (vlog-8891) All optimizations are disabled because the -novopt option is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features, please see the User's Manual section on Preserving Object Visibility with vopt. -novopt option is now deprecated and will be removed in future releases.
+# Loading work.uvm_pkg
+# Loading work.lpddr5_controller_pkg
+# Loading work.top
+# ** Warning: (vsim-3764) Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /lpddr5_controller_pkg File: lpddr5_command_configuration.sv Line: 43
+# ** Warning: (vsim-3764) Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /lpddr5_controller_pkg File: lpddr5_command_configuration.sv Line: 49
+# ** Warning: (vsim-3764) Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /lpddr5_controller_pkg::lpddr5_controller_driver File: lpddr5_controller_driver.sv Line: 76
+# Compiling /tmp/shekharc@Neptune_dpi_15401/linux_gcc-5.3.0/exportwrapper.c
+# Loading /tmp/shekharc@Neptune_dpi_15401/linux_gcc-5.3.0/vsim_auto_compile.so
+# Loading /global/apps/mentor_graphics/questa_10.7d/questasim/uvm-1.2/linux/uvm_dpi.so
+# UVM_INFO /remote/pviphome01/uvm-1.2/src/base/uvm_root.svh(392) @ 0: reporter [UVM/RELNOTES] 
+# ----------------------------------------------------------------
+# UVM-1.2
+# (C) 2007-2014 Mentor Graphics Corporation
+# (C) 2007-2014 Cadence Design Systems, Inc.
+# (C) 2006-2014 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# (C) 2013-2014 NVIDIA Corporation
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO @ 0: reporter [RNTST] Running test test_WR16...
+# UVM_INFO lpddr5_controller_test.sv(37) @ 0: uvm_test_top [lpddr5_test] Inside build_phase
+# UVM_INFO lpddr5_controller_env.sv(35) @ 0: uvm_test_top.env [lpddr5_controller_env] Inside build phase
+# UVM_INFO lpddr5_controller_env.sv(53) @ 0: uvm_test_top.env [lpddr5_controller_env] Inside connect phase
+# UVM_INFO lpddr5_controller_test.sv(47) @ 0: uvm_test_top [lpddr5_test] Inside end_of_elaboration_phase
+# UVM_INFO /remote/pviphome01/uvm-1.2/src/base/uvm_root.svh(579) @ 0: reporter [UVMTOP] UVM testbench topology:
+# --------------------------------------------------------------------
+# Name                        Type                         Size  Value
+# --------------------------------------------------------------------
+# uvm_test_top                test_WR16                    -     @345 
+#   env                       lpddr5_controller_env        -     @360 
+#     controller_agent        lpddr5_controller_agent      -     @371 
+#       controller_driver     lpddr5_controller_driver     -     @392 
+#         rsp_port            uvm_analysis_port            -     @411 
+#         seq_item_port       uvm_seq_item_pull_port       -     @401 
+#         write_data_fifo     uvm_tlm_analysis_fifo #(T)   -     @568 
+#           analysis_export   uvm_analysis_imp             -     @617 
+#           get_ap            uvm_analysis_port            -     @607 
+#           get_peek_export   uvm_get_peek_imp             -     @587 
+#           put_ap            uvm_analysis_port            -     @597 
+#           put_export        uvm_put_imp                  -     @577 
+#       controller_monitor    lpddr5_controller_monitor    -     @558 
+#         ap_port             uvm_analysis_port            -     @629 
+#         job_fifo            uvm_tlm_analysis_fifo #(T)   -     @639 
+#           analysis_export   uvm_analysis_imp             -     @688 
+#           get_ap            uvm_analysis_port            -     @678 
+#           get_peek_export   uvm_get_peek_imp             -     @658 
+#           put_ap            uvm_analysis_port            -     @668 
+#           put_export        uvm_put_imp                  -     @648 
+#       controller_sequencer  lpddr5_controller_sequencer  -     @421 
+#         rsp_export          uvm_analysis_export          -     @430 
+#         seq_item_export     uvm_seq_item_pull_imp        -     @548 
+#         arbitration_queue   array                        0     -    
+#         lock_queue          array                        0     -    
+#         num_last_reqs       integral                     32    'd1  
+#         num_last_rsps       integral                     32    'd1  
+#     sbd                     lpddr5_scoreboard            -     @380 
+#       sbd_imp               uvm_analysis_imp             -     @705 
+# --------------------------------------------------------------------
+# 
+# UVM_INFO lpddr5_controller_driver.sv(110) @ 0: uvm_test_top.env.controller_agent.controller_driver [DRV_TIMING] tCK=1500.000000ns, WL=8, tWCKENL=0, PreStatic=1, PreToggle=2, PST_WCK=2.500000
+# ****************inside command drive******************
+# before stable clock
+# after stable clock
+# inside forever
+# get_next_item exec
+##############################
+# -------------------------------------------------
+# Name            Type                Size  Value  
+# -------------------------------------------------
+# req             lpddr5_transaction  -     @747   
+#   cmd           string              3     ACT    
+#   bank          integral            3     'h3    
+#   row           integral            18    'h2dc70
+#   col           integral            10    'h33   
+#   burst_length  integral            32    'h10   
+#   mr_addr       integral            8     'h35   
+#   mr_data       integral            16    'hcfb8 
+# -------------------------------------------------
+# inside forever
+# get_next_item exec
+##############################
+# -------------------------------------------------
+# Name            Type                Size  Value  
+# -------------------------------------------------
+# req             lpddr5_transaction  -     @785   
+#   cmd           string              3     CAS    
+#   bank          integral            3     'h3    
+#   row           integral            18    'h2dc70
+#   col           integral            10    'h33   
+#   burst_length  integral            32    'h10   
+#   mr_addr       integral            8     'haf   
+#   mr_data       integral            16    'hf9d0 
+# -------------------------------------------------
+# inside forever
+# get_next_item exec
+##############################
+# -------------------------------------------------
+# Name            Type                Size  Value  
+# -------------------------------------------------
+# req             lpddr5_transaction  -     @793   
+#   cmd           string              4     WR16   
+#   bank          integral            3     'h3    
+#   row           integral            18    'h2dc70
+#   col           integral            10    'h33   
+#   burst_length  integral            32    'h10   
+#   mr_addr       integral            8     'h5e   
+#   mr_data       integral            16    'hec42 
+# -------------------------------------------------
+# got from fifo in data_drive
+# inside forever
+# UVM_INFO /remote/pviphome01/uvm-1.2/src/base/uvm_objection.svh(1270) @ 30374059000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO lpddr5_scoreboard.sv(75) @ 30374059000: uvm_test_top.env.sbd [SBD_RUN] inside sbd check phase
+# UVM_INFO lpddr5_scoreboard.sv(110) @ 30374059000: uvm_test_top.env.sbd [SBD_REPORT] Total Matches: 0
+# UVM_INFO lpddr5_scoreboard.sv(111) @ 30374059000: uvm_test_top.env.sbd [SBD_REPORT] ############## Test Passed ############
+# UVM_INFO /remote/pviphome01/uvm-1.2/src/base/uvm_report_server.svh(847) @ 30374059000: reporter [UVM/REPORT/SERVER] 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   12
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [DRV_TIMING]     1
+# [RNTST]     1
+# [SBD_REPORT]     2
+# [SBD_RUN]     1
+# [TEST_DONE]     1
+# [UVM/RELNOTES]     1
+# [UVMTOP]     1
+# [lpddr5_controller_env]     2
+# [lpddr5_test]     2
+# 
+# ** Note: $finish    : /remote/pviphome01/uvm-1.2/src/base/uvm_root.svh(517)
+#    Time: 30374058500 ps  Iteration: 67  Instance: /top
+# 1
+# Break in Task uvm_pkg/uvm_root::run_test at /remote/pviphome01/uvm-1.2/src/base/uvm_root.svh line 517
+do run.do
+# QuestaSim vlog 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 12:09:26 on Dec 09,2025
+# vlog -reportprogress 300 lpddr5_controller_top.sv "+incdir+/remote/pviphome01/uvm-1.2/src" 
+# -- Compiling package uvm_pkg
+# -- Compiling package lpddr5_controller_pkg
+# -- Importing package uvm_pkg
+# ** Warning: ** while parsing file included at lpddr5_controller_top.sv(33)
+# ** at lpddr5_timing_configuration.sv(59): (vlog-2240) Treating stand-alone use of function 'randomize' as an implicit VOID cast.
+# ** Warning: ** while parsing file included at lpddr5_controller_top.sv(33)
+# ** at lpddr5_controller_driver.sv(98): (vlog-2875) Task "write_latency" is being called in function "calculate_timing_params".
+# ** Warning: ** while parsing file included at lpddr5_controller_top.sv(33)
+# ** at lpddr5_controller_driver.sv(99): (vlog-2875) Task "read_latency" is being called in function "calculate_timing_params".
+# ** Warning: ** while parsing file included at lpddr5_controller_top.sv(33)
+# ** at lpddr5_controller_driver.sv(100): (vlog-2875) Task "get_twckenl_and_twckpre_toggle_and_twckpre_static_wr_ck" is being called in function "calculate_timing_params".
+# ** Warning: ** while parsing file included at lpddr5_controller_top.sv(33)
+# ** at lpddr5_controller_driver.sv(109): (vlog-2875) Task "get_tWCKPST_wck" is being called in function "calculate_timing_params".
+# -- Compiling interface lpddr5_interface
+# -- Compiling module top
+# -- Importing package lpddr5_controller_pkg
+# 
+# Top level modules:
+# 	top
+# End time: 12:09:29 on Dec 09,2025, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 5
+# End time: 12:10:00 on Dec 09,2025, Elapsed time: 0:32:42
+# Errors: 0, Warnings: 10
+# ** Warning: (vsim-159) Mode option -64 is not supported in this context and will be ignored.
+# vsim -64 -novopt -suppress 12110 top -sv_lib /global/apps/mentor_graphics/questa_10.7d/questasim/uvm-1.2/linux/uvm_dpi "+UVM_TESTNAME=test_WR16" "+UVM_VERBOSITY=UVM_MEDIUM" 
+# Start time: 12:10:00 on Dec 09,2025
+# Loading /tmp/shekharc@Neptune_dpi_20732/linux_gcc-5.3.0/export_tramp.so
+# ** Warning: (vsim-8891) All optimizations are disabled because the -novopt option is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features, please see the User's Manual section on Preserving Object Visibility with vopt. -novopt option is now deprecated and will be removed in future releases.
+# Refreshing /home/shekharc/LPDDR5_VIP_by_Shekhar/work.top
+# ** Warning: (vlog-8891) All optimizations are disabled because the -novopt option is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features, please see the User's Manual section on Preserving Object Visibility with vopt. -novopt option is now deprecated and will be removed in future releases.
+# ** Note: (vsim-8785) UVM-aware debugging capabilities will be disabled since no compiled "questa_uvm_pkg" can be found.
+# This also means that later if you turn on UVM-aware debugging your debug simulations may have
+# different random seeds from your non-debug simulations.
+# Refreshing /home/shekharc/LPDDR5_VIP_by_Shekhar/work.lpddr5_interface
+# ** Warning: (vlog-8891) All optimizations are disabled because the -novopt option is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features, please see the User's Manual section on Preserving Object Visibility with vopt. -novopt option is now deprecated and will be removed in future releases.
+# Loading sv_std.std
+# Loading work.lpddr5_interface
+# Refreshing /home/shekharc/LPDDR5_VIP_by_Shekhar/work.lpddr5_controller_pkg
+# ** Warning: (vlog-8891) All optimizations are disabled because the -novopt option is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features, please see the User's Manual section on Preserving Object Visibility with vopt. -novopt option is now deprecated and will be removed in future releases.
+# Refreshing /home/shekharc/LPDDR5_VIP_by_Shekhar/work.uvm_pkg
+# ** Warning: (vlog-8891) All optimizations are disabled because the -novopt option is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features, please see the User's Manual section on Preserving Object Visibility with vopt. -novopt option is now deprecated and will be removed in future releases.
+# Loading work.uvm_pkg
+# Loading work.lpddr5_controller_pkg
+# Loading work.top
+# ** Warning: (vsim-3764) Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /lpddr5_controller_pkg File: lpddr5_command_configuration.sv Line: 43
+# ** Warning: (vsim-3764) Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /lpddr5_controller_pkg File: lpddr5_command_configuration.sv Line: 49
+# ** Warning: (vsim-3764) Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /lpddr5_controller_pkg::lpddr5_controller_driver File: lpddr5_controller_driver.sv Line: 76
+# Compiling /tmp/shekharc@Neptune_dpi_20732/linux_gcc-5.3.0/exportwrapper.c
+# Loading /tmp/shekharc@Neptune_dpi_20732/linux_gcc-5.3.0/vsim_auto_compile.so
+# Loading /global/apps/mentor_graphics/questa_10.7d/questasim/uvm-1.2/linux/uvm_dpi.so
+# UVM_INFO /remote/pviphome01/uvm-1.2/src/base/uvm_root.svh(392) @ 0: reporter [UVM/RELNOTES] 
+# ----------------------------------------------------------------
+# UVM-1.2
+# (C) 2007-2014 Mentor Graphics Corporation
+# (C) 2007-2014 Cadence Design Systems, Inc.
+# (C) 2006-2014 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# (C) 2013-2014 NVIDIA Corporation
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO @ 0: reporter [RNTST] Running test test_WR16...
+# UVM_INFO lpddr5_controller_test.sv(37) @ 0: uvm_test_top [lpddr5_test] Inside build_phase
+# UVM_INFO lpddr5_controller_env.sv(35) @ 0: uvm_test_top.env [lpddr5_controller_env] Inside build phase
+# UVM_INFO lpddr5_controller_env.sv(53) @ 0: uvm_test_top.env [lpddr5_controller_env] Inside connect phase
+# UVM_INFO lpddr5_controller_test.sv(47) @ 0: uvm_test_top [lpddr5_test] Inside end_of_elaboration_phase
+# UVM_INFO /remote/pviphome01/uvm-1.2/src/base/uvm_root.svh(579) @ 0: reporter [UVMTOP] UVM testbench topology:
+# --------------------------------------------------------------------
+# Name                        Type                         Size  Value
+# --------------------------------------------------------------------
+# uvm_test_top                test_WR16                    -     @345 
+#   env                       lpddr5_controller_env        -     @360 
+#     controller_agent        lpddr5_controller_agent      -     @371 
+#       controller_driver     lpddr5_controller_driver     -     @392 
+#         rsp_port            uvm_analysis_port            -     @411 
+#         seq_item_port       uvm_seq_item_pull_port       -     @401 
+#         write_data_fifo     uvm_tlm_analysis_fifo #(T)   -     @568 
+#           analysis_export   uvm_analysis_imp             -     @617 
+#           get_ap            uvm_analysis_port            -     @607 
+#           get_peek_export   uvm_get_peek_imp             -     @587 
+#           put_ap            uvm_analysis_port            -     @597 
+#           put_export        uvm_put_imp                  -     @577 
+#       controller_monitor    lpddr5_controller_monitor    -     @558 
+#         ap_port             uvm_analysis_port            -     @629 
+#         job_fifo            uvm_tlm_analysis_fifo #(T)   -     @639 
+#           analysis_export   uvm_analysis_imp             -     @688 
+#           get_ap            uvm_analysis_port            -     @678 
+#           get_peek_export   uvm_get_peek_imp             -     @658 
+#           put_ap            uvm_analysis_port            -     @668 
+#           put_export        uvm_put_imp                  -     @648 
+#       controller_sequencer  lpddr5_controller_sequencer  -     @421 
+#         rsp_export          uvm_analysis_export          -     @430 
+#         seq_item_export     uvm_seq_item_pull_imp        -     @548 
+#         arbitration_queue   array                        0     -    
+#         lock_queue          array                        0     -    
+#         num_last_reqs       integral                     32    'd1  
+#         num_last_rsps       integral                     32    'd1  
+#     sbd                     lpddr5_scoreboard            -     @380 
+#       sbd_imp               uvm_analysis_imp             -     @705 
+# --------------------------------------------------------------------
+# 
+# UVM_INFO lpddr5_controller_driver.sv(111) @ 0: uvm_test_top.env.controller_agent.controller_driver [DRV_TIMING] tCK=1500.000000ns, WL=8, tWCKENL=3, PreStatic=4, PreToggle=2, PST_WCK=2.500000
+# ****************inside command drive******************
+# before stable clock
+# after stable clock
+# inside forever
+# get_next_item exec
+##############################
+# -------------------------------------------------
+# Name            Type                Size  Value  
+# -------------------------------------------------
+# req             lpddr5_transaction  -     @747   
+#   cmd           string              3     ACT    
+#   bank          integral            3     'h3    
+#   row           integral            18    'h2dc70
+#   col           integral            10    'h33   
+#   burst_length  integral            32    'h10   
+#   mr_addr       integral            8     'h35   
+#   mr_data       integral            16    'hcfb8 
+# -------------------------------------------------
+# inside forever
+# get_next_item exec
+##############################
+# -------------------------------------------------
+# Name            Type                Size  Value  
+# -------------------------------------------------
+# req             lpddr5_transaction  -     @785   
+#   cmd           string              3     CAS    
+#   bank          integral            3     'h3    
+#   row           integral            18    'h2dc70
+#   col           integral            10    'h33   
+#   burst_length  integral            32    'h10   
+#   mr_addr       integral            8     'haf   
+#   mr_data       integral            16    'hf9d0 
+# -------------------------------------------------
+# inside forever
+# get_next_item exec
+##############################
+# -------------------------------------------------
+# Name            Type                Size  Value  
+# -------------------------------------------------
+# req             lpddr5_transaction  -     @793   
+#   cmd           string              4     WR16   
+#   bank          integral            3     'h3    
+#   row           integral            18    'h2dc70
+#   col           integral            10    'h33   
+#   burst_length  integral            32    'h10   
+#   mr_addr       integral            8     'h5e   
+#   mr_data       integral            16    'hec42 
+# -------------------------------------------------
+# got from fifo in data_drive
+# inside forever
+# UVM_INFO /remote/pviphome01/uvm-1.2/src/base/uvm_objection.svh(1270) @ 30383059000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO lpddr5_scoreboard.sv(75) @ 30383059000: uvm_test_top.env.sbd [SBD_RUN] inside sbd check phase
+# UVM_INFO lpddr5_scoreboard.sv(110) @ 30383059000: uvm_test_top.env.sbd [SBD_REPORT] Total Matches: 0
+# UVM_INFO lpddr5_scoreboard.sv(111) @ 30383059000: uvm_test_top.env.sbd [SBD_REPORT] ############## Test Passed ############
+# UVM_INFO /remote/pviphome01/uvm-1.2/src/base/uvm_report_server.svh(847) @ 30383059000: reporter [UVM/REPORT/SERVER] 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   12
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [DRV_TIMING]     1
+# [RNTST]     1
+# [SBD_REPORT]     2
+# [SBD_RUN]     1
+# [TEST_DONE]     1
+# [UVM/RELNOTES]     1
+# [UVMTOP]     1
+# [lpddr5_controller_env]     2
+# [lpddr5_test]     2
+# 
+# ** Note: $finish    : /remote/pviphome01/uvm-1.2/src/base/uvm_root.svh(517)
+#    Time: 30383058500 ps  Iteration: 67  Instance: /top
+# 1
+# Break in Task uvm_pkg/uvm_root::run_test at /remote/pviphome01/uvm-1.2/src/base/uvm_root.svh line 517
+exit

@@ -95,11 +95,11 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
 
   // Helper to convert timing config values into clock cycles
   function void calculate_timing_params();
-    t_cfg.write_latency(current_ratio, t_cfg.tck_avg_ns, 0, 0, local_wl_ck);
-    t_cfg.read_latency(current_ratio,t_cfg.tck_avg_ns,0,local_rl_ck,local_nwr_ck);
+    t_cfg.write_latency(current_ratio, t_cfg.tck_avg_ns/1000, 0, 0, local_wl_ck);
+    t_cfg.read_latency(current_ratio,t_cfg.tck_avg_ns/1000,0,local_rl_ck,local_nwr_ck);
     t_cfg.get_twckenl_and_twckpre_toggle_and_twckpre_static_wr_ck(
       current_ratio, 
-      t_cfg.tck_avg_ns, 
+      t_cfg.tck_avg_ns/1000, 
       0, 
       local_twckenl_wr_ck,      
       local_twckpre_toggle_wr_ck, 
@@ -334,7 +334,7 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
   //===============================================================
 
   task wck_generation(bit clock_stop, bit drive_wck, bit ratio);
-    real simulation_cycle = 1500;
+    real simulation_cycle = t_cfg.tck_avg_ns;
 
     if (clock_stop == 0) begin
       if (drive_wck == 1) begin // Toggle
@@ -382,7 +382,7 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
   //===============================================================
 
   task pre_tog(bit ratio);
-    real simulation_cycle = 1500;
+    real simulation_cycle = t_cfg.tck_avg_ns;
     if(ratio==0)
       begin//4:1 => sim/8
         repeat(local_twckpre_toggle_wr_ck)begin

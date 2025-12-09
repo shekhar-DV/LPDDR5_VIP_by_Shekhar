@@ -175,7 +175,7 @@ class lpddr5_timing_configuration extends uvm_object;
 
   real trcd_ns = 18;
 
- real tck_avg_ns=1.5;
+ real tck_avg_ns=1500;
 
 
 
