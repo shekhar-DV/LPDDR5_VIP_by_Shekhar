@@ -1,0 +1,64 @@
+`ifndef LPDDR5_COMMON_SV
+	`define LPDDR5_COMMON_SV
+ `define LP5_WCK_WIDTH      2
+`define LP5_COMMAND_ADDRESS_WIDTH 7
+`define LP5_RDQS_WIDTH 2
+`define LP5_DMI_WIDTH 2
+// ---------------------------------------------------
+// LPDDR5 ADDRESS FIELD WIDTH
+// ---------------------------------------------------
+`define LP5_BANK_WIDTH      3        // 8 banks
+`define LP5_ROW_WIDTH       18       // 18-bit row
+`define LP5_COL_WIDTH       10       // 10-bit column
+`define LP5_DATA_WIDTH      16
+ 
+// ---------------------------------------------------
+// BURST LENGTHS
+// ---------------------------------------------------
+`define LP5_BL16            16
+`define LP5_BL32            32
+ 
+// ---------------------------------------------------
+// MAX DATA WIDTHS
+// ---------------------------------------------------
+
+//`timescale 1us/1ps
+
+`define tINT1 200
+
+`define COMMAND_ADDRESS 7
+`define DATA_WIDTH 16
+
+//-----------------------------------
+// WRITE ECC GENERATION
+//-----------------------------------
+`define LPDDR5_DMI_ECC_MSG_BITS 16
+`define LPDDR5_DMI_ECC_PARITY_BITS 6
+`define LPDDR5_DQ_ECC_MSG_BITS 128
+`define LPDDR5_DQ_ECC_PARITY_BITS 9
+
+`ifndef LPDDR5_ECC_DQ_SYNDROME
+`define LPDDR5_ECC_DQ_SYNDROME {128'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, \
+                                    128'hFF00FF00FF00FF00FF00FF00FF00FF00,128'h00FF00FF00FF00FFFF00FF00FF00FF00, \
+                                    128'h00FFFF00FF00FF0000FF00FF00FFFF00,128'hFF0000FF00FFFF0000FF00FFFF0000FF, \
+                                    128'hFF0000FFFF0000FF00FFFF0000FF00FF,128'hF0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0, \
+                                    128'hCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,128'hAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA }
+`endif                                    
+
+`ifndef LPDDR5_ECC_ERR_BEAT_DECODER
+`define LPDDR5_ECC_DQ_ERR_BEAT_DECODER {5'b10011, 5'b01100, 5'b10100, 5'b01011, 5'b10101, 5'b01010, 5'b10110, 5'b01001, 5'b11000, 5'b00111, 5'b11001, 5'b00110, 5'b11010, 5'b00101, 5'b11100, 5'b00011}
+`endif
+
+`ifndef LPDDR5_ECC_DMI_SYNDROME
+`define LPDDR5_ECC_DMI_SYNDROME {16'hFFFF,16'hFFF0,16'hF0FF,16'hFF0F,16'hCCCC,16'hAAAA} 
+`endif                                    
+
+
+
+class common;
+  static bit ratio=0;
+  static  bit clock_stop=0;
+  static bit drive_wck=0;
+  
+endclass
+`endif
