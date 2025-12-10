@@ -26,7 +26,7 @@ class lpddr5_timing_configuration extends uvm_object;
   bit[1:0] bk_org_orig;
 
 
-  real simulation_cycle =12;
+ // real simulation_cycle =12;
   byte MR10_OP;
 
   bit dvfsc_orig;
@@ -34,7 +34,7 @@ class lpddr5_timing_configuration extends uvm_object;
   /////////////////////////////////////
 
   //Clock time-Period in ns
-  rand int tCK_ns = 2;
+  real tck_avg_ns = 2.5;
 
   //Power-Up -- Reset -- Initilisation training 
   //Max voltage-ramp time at power-up
@@ -61,13 +61,19 @@ class lpddr5_timing_configuration extends uvm_object;
 
  constraint tINIT_c
   {
-    tINIT0_ns inside {[0:20000000]};
-    tINIT1_ns inside {[ 200000:1000000]};
-    tINIT2_ns inside {[ 10:100]};
-    tINIT3_ns inside {[ 2000000:10000000]};
-    tINIT4_ck inside {[ 5:50]};
-    tINIT5_ns inside {[ 2000:10000]};
-  }
+     tINIT0_ns inside {[0:20000000]};
+     tINIT1_ns inside {[ 200000:1000000]};
+     tINIT2_ns inside {[ 10:100]};
+     tINIT3_ns inside {[ 2000000:10000000]};
+     tINIT4_ck inside {[ 5:50]};
+     tINIT5_ns inside {[ 2000:10000]};
+//    tINIT0_ns == 10;// for simulation only
+//    tINIT1_ns == 10;// for simulation only
+//    tINIT2_ns == 10;// for simulation only
+//    tINIT3_ns == 10;// for simulation only
+//    tINIT4_ck == 10;// for simulation only
+//    tINIT5_ns == 10;// for simulation only
+  }// for simulation only
 
 
 
@@ -88,8 +94,8 @@ class lpddr5_timing_configuration extends uvm_object;
   real tRPRE_wck = 4;
   real tRPST_wck = 0.5;
 
-  real tWCK2DQI_ns = (simulation_cycle/4)/4; //wck_tp=ck_tp/4 & wck2dqi= wck/4
-  real tWCK2DQO_ns = (simulation_cycle/4)/4; //wck_tp=ck_tp/4 & wck2dqi= wck/4
+  real tWCK2DQI_ns = (tck_avg_ns/4)/4; //wck_tp=ck_tp/4 & wck2dqi= wck/4
+  real tWCK2DQO_ns = (tck_avg_ns/4)/4; //wck_tp=ck_tp/4 & wck2dqi= wck/4
 
 
   //Effective burst_length
@@ -175,7 +181,6 @@ class lpddr5_timing_configuration extends uvm_object;
 
   real trcd_ns = 18;
 
- real tck_avg_ns=1500;
 
 
 
@@ -203,7 +208,7 @@ class lpddr5_timing_configuration extends uvm_object;
       if(ckr_orig) global_ckr =2; //1 == 2:1
       else global_ckr         =4; //0 == 4:1
 
-      data_rate = (2*global_ckr*1000)/(simulation_cycle*0.001); //global_ckr == ratio 
+      data_rate = (2*global_ckr*1000)/(tck_avg_ns); //global_ckr == ratio 
 
       case(ckr_orig) //MR18_OP[7]
         0 : begin //4:1
@@ -1948,37 +1953,37 @@ class lpddr5_timing_configuration extends uvm_object;
           if (tck_avg_ns >= 14.925) begin                      // freq = 67 MHz
             wl_opcode = 0000;
           end
-          else if (tck_avg_ns >= 7.518  && tck_avg_ns < 14.925) begin // 67–133 MHz
+          else if (tck_avg_ns >= 7.518  && tck_avg_ns < 14.925) begin // 67ï¿½133 MHz
             wl_opcode = 0001;
           end
-          else if (tck_avg_ns >= 5      && tck_avg_ns < 7.518) begin  // 133–200 MHz
+          else if (tck_avg_ns >= 5      && tck_avg_ns < 7.518) begin  // 133ï¿½200 MHz
             wl_opcode = 0010;
           end
-          else if (tck_avg_ns >= 3.745  && tck_avg_ns < 5) begin      // 200–267 MHz
+          else if (tck_avg_ns >= 3.745  && tck_avg_ns < 5) begin      // 200ï¿½267 MHz
             wl_opcode = 0011;
           end
-          else if (tck_avg_ns >= 2.906  && tck_avg_ns < 3.745) begin  // 267–344 MHz
+          else if (tck_avg_ns >= 2.906  && tck_avg_ns < 3.745) begin  // 267ï¿½344 MHz
             wl_opcode = 0100;
           end
-          else if (tck_avg_ns >= 2.5    && tck_avg_ns < 2.906) begin  // 344–400 MHz
+          else if (tck_avg_ns >= 2.5    && tck_avg_ns < 2.906) begin  // 344ï¿½400 MHz
             wl_opcode = 0101;
           end
-          else if (tck_avg_ns >= 2.141  && tck_avg_ns < 2.5) begin    // 400–467 MHz
+          else if (tck_avg_ns >= 2.141  && tck_avg_ns < 2.5) begin    // 400ï¿½467 MHz
             wl_opcode = 0110;
           end 
-          else if (tck_avg_ns >= 1.876  && tck_avg_ns < 2.141) begin  // 467–533 MHz
+          else if (tck_avg_ns >= 1.876  && tck_avg_ns < 2.141) begin  // 467ï¿½533 MHz
             wl_opcode = 0111;
           end
-          else if (tck_avg_ns >= 1.666  && tck_avg_ns < 1.876) begin  // 533–600 MHz
+          else if (tck_avg_ns >= 1.666  && tck_avg_ns < 1.876) begin  // 533ï¿½600 MHz
             wl_opcode = 1000;
           end
-          else if (tck_avg_ns >= 1.453  && tck_avg_ns < 1.666) begin  // 600–688 MHz
+          else if (tck_avg_ns >= 1.453  && tck_avg_ns < 1.666) begin  // 600ï¿½688 MHz
             wl_opcode = 1001;
           end
-          else if (tck_avg_ns >= 1.333  && tck_avg_ns < 1.453) begin  // 688–750 MHz
+          else if (tck_avg_ns >= 1.333  && tck_avg_ns < 1.453) begin  // 688ï¿½750 MHz
             wl_opcode = 1010;
           end
-          else if (tck_avg_ns >= 1.25  && tck_avg_ns < 1.333) begin   // 750–800 MHz
+          else if (tck_avg_ns >= 1.25  && tck_avg_ns < 1.333) begin   // 750ï¿½800 MHz
             wl_opcode = 1011;
           end
         end
@@ -1987,22 +1992,22 @@ class lpddr5_timing_configuration extends uvm_object;
 
 
         1 : begin  
-          if (tck_avg_ns >= 7.518) begin                       // 10–133 MHz
+          if (tck_avg_ns >= 7.518) begin                       // 10ï¿½133 MHz
             wl_opcode = 0000;
           end
-          else if (tck_avg_ns >= 3.745 && tck_avg_ns < 7.518) begin   // 133–267 MHz
+          else if (tck_avg_ns >= 3.745 && tck_avg_ns < 7.518) begin   // 133ï¿½267 MHz
             wl_opcode = 0001;
           end
-          else if (tck_avg_ns >= 2.5   && tck_avg_ns < 3.745) begin   // 267–400 MHz
+          else if (tck_avg_ns >= 2.5   && tck_avg_ns < 3.745) begin   // 267ï¿½400 MHz
             wl_opcode = 0010;
           end
-          else if (tck_avg_ns >= 1.876 && tck_avg_ns < 2.5) begin     // 400–533 MHz
+          else if (tck_avg_ns >= 1.876 && tck_avg_ns < 2.5) begin     // 400ï¿½533 MHz
             wl_opcode = 0011;
           end
-          else if (tck_avg_ns >= 1.454 && tck_avg_ns < 1.876) begin   // 533–688 MHz
+          else if (tck_avg_ns >= 1.454 && tck_avg_ns < 1.876) begin   // 533ï¿½688 MHz
             wl_opcode = 0100;
           end
-          else if (tck_avg_ns >= 1.25  && tck_avg_ns < 1.454) begin   // 688–800 MHz
+          else if (tck_avg_ns >= 1.25  && tck_avg_ns < 1.454) begin   // 688ï¿½800 MHz
             wl_opcode = 0101;
           end
         end
@@ -2430,6 +2435,7 @@ class lpddr5_timing_configuration extends uvm_object;
     begin
       automatic bit [3:0] rl_opcode;
       automatic bit [3:0] nwr_opcode;
+      automatic real simulation_cycle=tck_avg_ns*1000;
       case (ratio)
         0: begin
           if ((simulation_cycle/1000) >= 14.925) begin
