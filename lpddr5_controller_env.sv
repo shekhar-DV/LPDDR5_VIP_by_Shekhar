@@ -44,7 +44,7 @@ class lpddr5_controller_env extends uvm_env;
     //construct for command configuration
     cmd_config =  lpddr5_command_configuration::type_id::create("cmd_config");
     //assigning tck_avg_ns to simulation_cycle
-    timing_config.simulation_cycle = timing_config.tck_avg_ns;
+//    timing_config.simulation_cycle = timing_config.tck_avg_ns;
   endfunction
   
   //connecting monitor and scoreboard by analysis port declare in the monitor
