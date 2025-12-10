@@ -148,7 +148,7 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
         // Check operands: WS_WR=1, WS_RD=0, WS_FS=0
         if(driver_vif.ca[4]==1 && driver_vif.ca[5]==0 && driver_vif.ca[6]==0) begin
           // Wait for WCK enable latency before toggling
-          repeat(local_twckenl_wr_ck) @(posedge driver_vif.ck_t);
+//          repeat(local_twckenl_wr_ck) @(posedge driver_vif.ck_t);
           drive_wck = 1; 
         end
         else drive_wck = 0;
