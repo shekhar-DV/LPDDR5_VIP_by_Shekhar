@@ -79,7 +79,6 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
   task run_phase(uvm_phase phase);
     reset_default();
 
-    if (!t_cfg.randomize()) `uvm_error("DRV", "Timing Config Randomization Failed");
 
     // Convert timing config (ns) into cycles for driver usage
     calculate_timing_params(); 
@@ -95,11 +94,11 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
 
   // Helper to convert timing config values into clock cycles
   function void calculate_timing_params();
-    t_cfg.write_latency(current_ratio, t_cfg.tck_avg_ns/1000, 0, 0, local_wl_ck);
-    t_cfg.read_latency(current_ratio,t_cfg.tck_avg_ns/1000,0,local_rl_ck,local_nwr_ck);
+    t_cfg.write_latency(current_ratio, t_cfg.tck_avg_ns, 0, 0, local_wl_ck);
+    t_cfg.read_latency(current_ratio,t_cfg.tck_avg_ns,0,local_rl_ck,local_nwr_ck);
     t_cfg.get_twckenl_and_twckpre_toggle_and_twckpre_static_wr_ck(
       current_ratio, 
-      t_cfg.tck_avg_ns/1000, 
+      t_cfg.tck_avg_ns, 
       0, 
       local_twckenl_wr_ck,      
       local_twckpre_toggle_wr_ck, 
@@ -152,17 +151,7 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
           repeat(local_twckenl_wr_ck) @(posedge driver_vif.ck_t);
           drive_wck = 1; 
         end
-        else if(driver_vif.ca[4]==0 && driver_vif.ca[5]==1 && driver_vif.ca[6]==0) begin
-          // Wait for WCK enable latency before toggling
-          repeat(local_twckenl_rd_ck) @(posedge driver_vif.ck_t);
-          drive_wck = 1; 
-        end
-        else if(driver_vif.ca[4]==0 && driver_vif.ca[5]==0 && driver_vif.ca[6]==1) begin
-          // Wait for WCK enable latency before toggling
-          repeat(local_twckenl_rd_ck) @(posedge driver_vif.ck_t);
-          drive_wck = 1; 
-        end
-        else drive_wck=0;
+        else drive_wck = 0;
       end
 
 
@@ -207,17 +196,26 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
 
     write_data_fifo.get(wr_req);
     $display("got from fifo in data_drive");
+   
+    //enable and wl should run parallely and wl should come after 1 clock cycle once enable is started
+    fork
+      begin
+        // Wait for WCK enable latency
+        preamble_wait_cycles = local_twckenl_wr_ck;
+        if (preamble_wait_cycles > 0) begin
+          repeat (preamble_wait_cycles) @(posedge driver_vif.ck_t);
+        end
+      end
+    
+      begin
+        // Wait for Write Latency (WL)
+        if (local_wl_ck > 0) begin
+          repeat(local_wl_ck+1) @(posedge driver_vif.ck_t);
+        end
+      end
+    join
 
-    // Wait for Write Latency (WL)
-    if (local_wl_ck > 0) begin
-      repeat(local_wl_ck) @(posedge driver_vif.ck_t);
-    end
 
-    // Wait for WCK enable latency
-    preamble_wait_cycles = local_twckenl_wr_ck;
-    if (preamble_wait_cycles > 0) begin
-      repeat (preamble_wait_cycles) @(posedge driver_vif.ck_t);
-    end
 
     // Drive WCK Preamble (Static Low + Toggling)
     //     repeat (local_twckpre_static_wr_ck) @(posedge driver_vif.ck_t);
