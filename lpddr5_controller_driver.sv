@@ -282,12 +282,15 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
 
 
   task clock_generation();
+    driver_vif.ck_c = 0;
+    driver_vif.ck_t = 1;
     fork
       forever begin
         wck_generation(clock_stop, drive_wck, current_ratio);
       end
 
       forever begin
+        
         ck_generation(clock_stop);
       end
     join
@@ -305,10 +308,6 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
     real simulation_cycle = t_cfg.tck_avg_ns;
 
     if (!clock_stop) begin
-      if (driver_vif.ck_c === 'x || driver_vif.ck_t === 'x) begin
-        driver_vif.ck_c = 0;
-        driver_vif.ck_t = 1;
-      end
       driver_vif.ck_c = ~driver_vif.ck_c;
       driver_vif.ck_t = ~driver_vif.ck_t;
       #(simulation_cycle/2); 
@@ -383,12 +382,12 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
     real simulation_cycle = t_cfg.tck_avg_ns;
     if(ratio==0)
       begin//4:1 => sim/8
-        repeat(local_twckpre_toggle_wr_ck)begin
+        repeat(local_twckpre_toggle_wr_ck*4)begin
           driver_vif.wck_c=~driver_vif.wck_c;
           driver_vif.wck_t=~driver_vif.wck_t;
           #(simulation_cycle/4);
         end
-        repeat(local_twckpre_toggle_wr_ck)begin
+        repeat(local_twckpre_toggle_wr_ck*8)begin
           driver_vif.wck_c=~driver_vif.wck_c;
           driver_vif.wck_t=~driver_vif.wck_t;
           #(simulation_cycle/8);
@@ -396,12 +395,12 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
       end
     if(ratio==1)
       begin//2:1 => sim/4
-        repeat(local_twckpre_toggle_wr_ck)begin
+        repeat(local_twckpre_toggle_wr_ck*2)begin
           driver_vif.wck_c=~driver_vif.wck_c;
           driver_vif.wck_t=~driver_vif.wck_t;
           #(simulation_cycle/2);
         end
-        repeat(local_twckpre_toggle_wr_ck)begin
+        repeat(local_twckpre_toggle_wr_ck*4)begin
           driver_vif.wck_c=~driver_vif.wck_c;
           driver_vif.wck_t=~driver_vif.wck_t;
           #(simulation_cycle/4);
@@ -431,3 +430,4 @@ class lpddr5_controller_driver extends uvm_driver#(lpddr5_transaction);
 
 endclass
 `endif
+
